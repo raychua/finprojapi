@@ -83,19 +83,24 @@ const finrecordSchema = new Schema({
   },
   personId: {
     type: String,
+    required: true,
   },
   title: {
     type: String,
     minlength: 3,
+    required: true,
   },
   amount: {
     type: Number,
+    required: true,
   },
   category: {
     type: String,
+    required: true,
   },
   classification: {
     type: String,
+    required: true,
     enum: ["Investment", "Expenditure"],
   },
 

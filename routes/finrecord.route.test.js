@@ -24,17 +24,6 @@ afterEach(async () => {
 });
 
 describe("finrecord.route", () => {
-  it("should return fin record when get finrecord", async () => {
-    const { body: finrecordList } = await request(app)
-      .get("/v1/finrecords")
-      .send({ person: "1111" })
-      .expect(200);
-    expect(finrecordList[0]).toMatchObject({
-      person: "1111",
-      title: "Base",
-    });
-  });
-
   it("should create a record when submit a normal spending record", async () => {
     const newFinrecord = {
       person: "1111",
