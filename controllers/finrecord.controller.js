@@ -44,6 +44,36 @@ const getOneFinRecord = async (req, res, next) => {
   }
 };
 
+const updateOneFinRecord = async (req, res, next) => {
+  console.log("In updateOneFinRecord:", req.finRecordId);
+  try {
+    const finRecordId = req.finRecordId;
+    const updateFinRecord = {
+      personId: req.body.person,
+      title: req.body.title,
+      amount: req.body.amount,
+      category: req.body.category,
+      classification: req.body.classification,
+    };
+    await Finrecord.findOneAndUpdate({ id: finRecordId }, updateFinRecord);
+    res.status(200).json(updateFinRecord);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteOneFinRecord = async (req, res, next) => {
+  console.log("In deleteOneFinRecord:", req.finRecordId);
+  try {
+    const finRecordId = req.finRecordId;
+
+    await Finrecord.findOneAndDelete({ id: finRecordId });
+    res.status(200).send("Record deleted successfully.");
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getAllCategories = async (req, res, next) => {
   console.log("In getAllCategories");
   try {
@@ -186,4 +216,6 @@ module.exports = {
   initCategories,
   getMainDisplay,
   getOneFinRecord,
+  updateOneFinRecord,
+  deleteOneFinRecord,
 };

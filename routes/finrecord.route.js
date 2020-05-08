@@ -13,5 +13,7 @@ router.get("/categories", finrecordController.getAllCategories);
 router.post("/categories/init", finrecordController.initCategories);
 router.get("/", finrecordController.getMainDisplay);
 router.get("/:id", finrecordController.getOneFinRecord);
+router.put("/:id", finrecordController.updateOneFinRecord);
+router.delete("/:id", finrecordController.deleteOneFinRecord);
 
 module.exports = router;
